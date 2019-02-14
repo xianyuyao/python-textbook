@@ -104,7 +104,19 @@ oct(x)=>返回八进制数
 x.lower()=>全变成小写
 x.upper()=>全大写
 x.islower()=>判断
-x.isprintable()=>
+x.isprintable()=>当x的所有字符都是可打印的，回复是
+x.isnumeric()=>是否全是数字
+xisspace()=>是否全是空格
+x.endswith(y)=>x的结尾是否是y
+x.startswith(y)=>同上
+x.split(sep="y")=>一个列表，是被y分开的x组成的
+x.count(y)=>返回y在x中出现的次数
+x.replace(old,new)=>替换功能
+x.center(width)=>居中函数
+x.strip(y)=>从左侧右侧去掉x的y
+x.zfill(width)=>返回长度为width的x，不足的用0补足
+x.format()=>返回x的排版格式
+x.join(iterable)=>
 
 math库函数
 from math import *
@@ -133,3 +145,50 @@ hypot(3,4)=>5求斜边
 
 "\n"=>换行
 "\t"=>tab
+
+format()格式控制
+"{0:30}".forward()=>默认右对齐，30为输出宽度
+"{0:>30}".forward()=>左对齐对齐
+"{0:*^30}".forward()=>居中，且用*填充
+"{0:-^30,}".forward()=>居中，且用-填充","指的是千分位会用逗号隔开
+"{0:.2f}".format(3.2324)=>两位小数
+"{0:H^.2f}".format(3.2324)=>两位小数，居中且用H填充
+b=>二进制形式
+c=>unicode形式
+d=>十进制形式
+o=>八进制形式
+x=>小写十六进制
+X=>大写十六进制
+e=>小写指数形式
+E=>大写指数形式
+f=>小写浮点数形式
+F=>大写浮点数形式
+
+from time import *
+print("{0:*^20}".format("执行开始"))
+for i in range(1,11):
+	x=10*i
+	y=i*"**"
+	z="--"*(10-i)
+	print("%{:3}[{}->{}]".format(x,y,z))
+	sleep(0.1)
+print("{0:*^20}".format("执行结束"))
+
+from time import *
+print("{0:*^20}".format("执行开始"))
+t=clock()
+for i in range(1,11):
+	x=10*i
+	y=i*"**"
+	z="--"*(10-i)
+	t-=clock()
+	print("%{:3}[{}->{}]{:.2f}s".format(x,y,z,t))
+	sleep(0.1)
+print("{0:*^20}".format("执行结束"))
+
+from tqdm import tqdm
+from time import sleep
+for i in tqdm(range(1,100)):
+	sleep(0.01)
+
+random库的常用函数
