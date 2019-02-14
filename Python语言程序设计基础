@@ -1,0 +1,135 @@
+str1=input("请输入人名：")
+str2=input("请输入地名：")
+print("世界这么大，{}想去{}看看".format(str1,str2))
+
+N=input("请输入一个正数：")
+sum=0
+for i in range(int(N)):
+	sum+=i+1
+print("sum({})={}".format(N,sum))
+
+for i in range(1,10):
+	for j in range(1,10):
+		print("{}*{}={:2}".format(i,j,i*j),end=' ')
+	print(' ')
+
+sum1,tmp=0,1
+for i in range(1,11):
+	tmp*=i
+	sum1+=tmp
+print("{}".format(sum1))
+
+n=1
+for i in range(5,0,-1):
+	n=(n+1)<<1
+print(n)
+
+diet=['西红柿','花椰菜','黄瓜','牛排','虾仁']
+for x in range(0,5):
+	for y in range(0,5):
+		if not(x==y):
+			print("{},{}".format(diet[x],diet[y]),end=' ')
+	print(' ')
+
+from turtle import *
+fillcolor("red")
+begin_fill()
+while True:
+	forward(200)
+	right(144)
+	if abs(pos())<1:
+		break
+end_fill()
+
+from turtle import *
+color('red','yellow')
+begin_fill()
+while True:
+	forward(200)
+	left(170)
+	if abs(pos())<1:
+		break
+end_fill()
+
+from turtle import *
+setup(650,350,200,200) #宽，高，对话框位置，对话框位置
+penup()
+fd(-250)
+pendown()
+pensize(25)
+pencolor("purple")
+seth(-40)
+for i in range(4):
+	circle(40,80)
+	circle(-40,80)
+circle(40,80/2)
+fd(40)
+circle(16,180)
+fd(40*2/3)
+
+eval(x) #把x变成需要的样子
+
+print("{:.2f}".format()) #保留两位小数
+
+money=input("请输入带单位的钱：")
+if money[-1] in ['元']:
+	dollar=eval(money[0:-1])/6
+	print("换算成美元，为{}美元".format(dollar))
+else:
+	chin=eval(money[0:-1])*6
+	print("换算成人民币，为{}元".format(chin))
+
+pow(x,y) #x的y次方
+
+x//y #整除
+x**y #x的y次方
+x%y #余数
+
+python的内置函数
+abs(-34)=>34	#绝对值函数
+divmod(3,4)=>(3//4,3%4)
+pow(2,3)=>2的3次方
+round(3.14159,3)=>3.142 保留3位小数
+max(2,3,4)=>极大值
+min(2,3,4)=>极小值
+int(x)=>字符串或浮点数x转换为整数
+float(x)=>整数或字符串x转换为字符串
+complex(10.99)=>生成一个复数
+len(x)=>字符串x的长度
+str(x)=>x变成字符串类型
+chr(x)=>返回编码的对应字符
+ord(x)=>返回编码的对应数字
+hex(x)=>返回十六进制数
+oct(x)=>返回八进制数
+x.lower()=>全变成小写
+x.upper()=>全大写
+x.islower()=>判断
+x.isprintable()=>
+
+math库函数
+from math import *
+pi =>π
+e =>自然对数
+inf =>正无穷大
+nan =>非浮点数标记
+fabs(-3.2) =>3.2 #绝对值函数
+fmod(3,2)=>3%2
+fsum(3,4,5)=>求和
+ceil(3.24)=>4 向上取整
+floor(3.24)=>3 向下取整
+factorial(3)=>3! 阶乘
+gcd(2,3)=>1 返回最大公约数
+modf(3.34)=>返回整数部分和小数部分
+trunc(3.42)=>3 返回整数部分
+copysign(4,-5)=>-4 用后面的符号换前面的符号
+isclose(2,3)=>比较2,3是否相似，返回是否
+pow(3,4)=>幂函数,同样可以开根号
+exp(3)=>e的3次方
+sqrt(4)=>根号4
+log(4,2)=>log(2)4
+degrees(pi)=>180 提供弧度，返回角度
+radians(180)=>pi 相反
+hypot(3,4)=>5求斜边
+
+"\n"=>换行
+"\t"=>tab
