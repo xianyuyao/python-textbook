@@ -87,9 +87,62 @@ x%y #余数
 
 python的内置函数
 abs(-34)=>34	#绝对值函数
+all()=>全对是true，错一个是false,其中0,空字符串，空列表都是错
+any()=>有一个对就true
+asci()
+bin()
+bool()
+dict()
 divmod(3,4)=>(3//4,3%4)
+eval()
+hash()=>哈希
+id()=>返回唯一编码
+input()
+list()
+open()
 pow(2,3)=>2的3次方
+print()
+range()
+reversed()=>逆序
 round(3.14159,3)=>3.142 保留3位小数
+set()
+sorted()=>默认从小到大排序
+tuple()
+type()
+zip()=>能将两个长度相同的列表组合成一个键值对
+bytes()
+delattr()
+bytearray()
+callable()
+classmethod()
+compile()
+dir()
+exec()
+enumerate()
+filter()
+format()
+frozenset()
+getattr()
+globals()
+hasattr()
+help()
+isinstance()
+issubclass()
+iter()
+locals()
+map()
+memoryview()
+next()
+object()
+property()
+repr()
+setattr()
+slice()
+staticmethod()
+sum()
+super()
+vars()
+__import__
 max(2,3,4)=>极大值
 min(2,3,4)=>极小值
 int(x)=>字符串或浮点数x转换为整数
@@ -117,6 +170,8 @@ x.strip(y)=>从左侧右侧去掉x的y
 x.zfill(width)=>返回长度为width的x，不足的用0补足
 x.format()=>返回x的排版格式
 x.join(iterable)=>
+f=lambda x,y:x+y=>匿名函数，一行内表示的函数
+f(21,12)=>33
 
 math库函数
 from math import *
@@ -192,3 +247,397 @@ for i in tqdm(range(1,100)):
 	sleep(0.01)
 
 random库的常用函数
+seed(a=None)=>初始化随机数种子
+random()=>随机生成[0.0,1.0)之间的随机小数
+randint(3,7)=>生成[3,7]之间的整数
+getrandbits(k)=>生成k比特长度的随机整数
+randrange(12,456,34)=>生成（12,456）步长为34的随机整数
+uniform(3,4)=>生成[3,4]的随机小数
+choice(seq)=>从列表中返回一个元素
+shuffle(seq)=>打乱列表的元素顺序
+sample(pop,k)=>从pop中选取k个元素，在列表中返回
+
+异处理
+try:
+	print("对了")
+except NameError:
+	print("错了")
+except:
+	print("其他错误")
+else:
+	print("补充上一个except")
+finally:
+	print("一定会被执行")
+
+def birthday(n):
+	for i in range(n):
+		print("生日快乐")
+birthday(4)
+
+def vfunc(a,*b):=>*指省略无数个元组数
+	print(type(b))
+	for n in b:
+		a+=n
+	return a
+vfunc(1,2,3,4,5)
+
+datetime库使用
+from datetime import *
+datetime.now()=>时间
+datetime.utcnow()=>世界标准时间
+someday=datetime.now()
+someday.year=>年份
+someday.month=>月
+someday.day=>日
+someday.hour=>小时
+someday.minute=>分
+someday.second=>秒
+someday.microsecond=>微秒
+someday.isoformat()=>ISO 8601的标准时间显示
+someday.isoweekday()=>返回1-7显示星期
+someday.strftime(format)=>格式化字符串format进行格式显示
+%Y=>年份
+%m=>月份
+%B=>月名
+%b=>月名缩写
+%d=>日期
+%A=>星期
+%a=>星期缩写
+%H=>小时（24h）
+%I=>小时（12h）
+%p=>上下午
+%M=>分钟
+%S=>秒
+
+组合数据
+x in s=>
+x not in s=>
+s+t=>连接s,t
+s*4=>复制
+s[i]=>第i个元素
+s[i:j]=>从[i,j)
+len(s)=>长度
+min(s)
+max(s)
+s.index(x,i,j)=>x在i,j中第一次出现的位置
+s.count(x)=>数个数
+
+S-T
+S-=T
+S&T
+S&=T
+S^T
+S=^T=>不包括同时在的元素
+S|T=>包括所有元素
+S=|T
+S<=T=>S是T的子集
+S>=T=>S是T的超集
+
+集合类型
+S.add(x)
+S.clear()
+S.copy()
+S.pop()=>随机返回一个元素
+S.discard(x)=>若x在S中，把他移出，不在不报错
+S.remove(x)=>若x在S中，把他移出，不在报错
+S.isdisjoint(T)=>ST没有相同元素，返回错误
+len(S)=>元素个数
+x in S
+x not in S
+
+列表类型，设列表为ls
+ls[i]=x
+ls[i:j]=lt
+del ls[i:j]=>删除
+ls+=lt
+ls*=n=>复制
+ls.append(x)=>在列表后面加元素
+ls.clear()
+ls.copy()
+ls.insert(i,x)=>在第i个位置增加x
+ls.pop(i)=>取出第i个元素，并删除
+ls.remove(x)=>将列表中出现的第一个x删除
+ls.reverse(x)=>反转
+
+from math import *
+def getNum():
+	Num=[]
+	iNum=input("请输入数字（输入空格则停止）：")
+	while iNum != "":
+		Num.append(eval(iNum))
+		iNum=input("请输入数字（输入空格则停止）：")
+	return Num
+def mean(Num):
+	n=len(Num)
+	sum=0
+	for i in Num:
+		sum+=i
+	return sum/n
+def median(Num):
+	sorted(Num)
+	n=len(Num)
+	if n%2==0:
+		return (Num[n//2-1]+Num[n//2])/2
+	else:
+		return Num[(n+1)//2]
+n=getNum()
+m=mean(n)
+q=median(n)
+print("平均值：{}，中位数：{}".format(m,q))
+
+字典类型
+<q>.keys()=>所有键信息
+<q>.values()=>所有值信息
+<q>.items()=>所有键值对
+<q>.get(key)=>返回相应值
+<q>.pop(key)=>返回值，删除相应键值对
+<q>.popitem()=>随机取出一个键值对
+<q>.clear()
+del <q>[key]
+<key> in <q>
+
+jieba库解析
+from jieba import *
+cut(s)=>返回可迭代的数据类型
+cut(s,cut_all=True)=>输出文本s中所有可能的单词
+cut_for_search(s)=>搜索引擎模式，适合搜索引擎建立索引的全部结果
+lcut(s)=>返回一个分词列表类型
+lcut(s,cut_all=True)=>全模式返回列表类型
+lcut_for_search(s)=>搜索引擎模式，适合搜索引擎建立索引的全部结果
+add_word(w)=>向分词词典增加新词w
+
+def getText():
+	txt=open("halmet.txt","r").read()
+	txt=txt.lower
+	for ch in '!"#$%^&*()@[\\]':
+		txt=txt.replace(ch," ")
+	return txt
+halmetTxt=getText()
+words=halmetTxt.split()
+counts={}
+for word in words:
+	counts[word]=counts.get(word,0)+1
+items=list(counts.items())
+items.sort(key=lambda x:x[1],reverse=True)
+for i in range(10):
+	word,count=items[i]
+	print("{0:<10}{1:>5}".format(word,count))
+
+文件打开模式
+'r'=>只读
+'w'=>覆盖写
+'x'=>创建写
+'a'=>追加写
+'b'=>二进制文件
+'t'=>文本文件模式
+'+'=>与a/w/x/r同时使用，在原功能基础上增加同时读写功能
+
+file=open('abc.txt',"rt")
+print(file.readline())
+file.close()
+
+文件内容读取方法
+<p>.readall()=>读入整个文件内容，并返回一个字符串
+<p>.read(size=-1)=>读入整个文件内容，并返回一个字符串
+<p>.readline(size=-1)=>读入一行内容，若给出参数，则读入该行前size长度的字符串
+<p>.readlines(hint=-1)=>读入所有行，以每行为元素形成列表，若给参数，就读hint行
+
+文件内容写入方法
+<p>.write(s)=>向文件写入字符串
+<P>.writelines(lines)=>将一个元素全为字符串的列表写入文件
+<p>.seek(offset)=>改变当前文字操作指针的位置，0为开头，1为当前为止，2为文件结尾
+
+fname=input("请输入要写入的文件：")
+fo=open(fname,"w+")
+ls=["唐诗","宋词","元曲"]
+fo.writelines(ls)
+fo.seek(0)
+for i in fo:
+	print(i)
+fo.close()
+
+PIL库Image解析
+from PIL import Image
+Image.open("***.jpg")
+Image.new(mode,size,color)=>创建新图像
+Image.open(stringIO,stringIO(buffer))=>从字符串中获取图像
+Image.frombytes(mode,size,data)=>根据像素data创建图像
+Image.verify()=>对图像文件完整性进行检查，返回异常
+pic.format=>标识图像格式或来源
+pic.mode=>色彩模式，L是灰度，RGB真彩，CMYK出版图像
+pic.size=>宽高
+pic.palette=>调色板属性
+gif.seek(frame)=>体转并返回图像中的制定帧
+gif.tell()=>返回当前帧的序号
+pic.save(filename,format)=>将文件保存为文件名，图片格式
+pic.convert(mode)=>使用不同的参数，转换图像为新的模式
+pic.thumbnail(size)=>创建图像缩略图，size是缩略图尺寸的二元元组
+pic.resize(size)=>改变大小
+pic.rotate(angle)=>旋转角度
+pic.point(func)=>根据函数func的功能对每个元素进行运算，返回副本
+pic.split()=>提取RGB图像的颜色通道，返回副本
+Image.merge(mode,bands)=>合并通道，其中mode表示色彩，bands表示新色彩通道
+pic.blend(im1,im2,alpha)=>将两幅图片按照如下公式插值后生成新图像：im1*(1.0-alpha)+im2*alpha
+
+from PIL import Image
+im=Image.open('abc.gif')
+try:
+	im.save('picframe{}'.format(im.tell()))
+	while True:
+		im.save('picframe{}.png'.format(im.tell()))
+except:
+	print("处理结束")
+
+from PIL import Image
+img=Image.open("sis.jpg")
+r,g,b=img.split()
+om=Image.merge("RGB",(g,r,b))
+om.save('234.jpg')
+
+ImageFilter类过滤增强方法
+ImageFilter.BLUR=>模糊
+ImageFilter.CONTOUR=>轮廓
+ImageFilter.DETAIL=>细节
+ImageFilter.EDGE_ENHANCE=>边界加强
+ImageFilter.EDGE_ENHANCE_MORE=>阙值边界加强
+ImageFilter.EMBOSS=>浮雕
+ImageFilter.FIND_EDGES=边界
+ImageFilter.SMOOTH=>平滑效果
+ImageFilter.SMOOTH_MORE=>阙值平滑效果
+ImageFilter.SHARPEN=>锐化
+
+from PIL import Image
+from PIL import ImageFilter
+im=Image.open("sis.jpg")
+om=im.filter(ImageFilter.CONTOUR)
+om.save('sisx.jpg')
+
+ImageEnhance类增强滤镜方法
+ImgeEnhance.enhance(factor)=>对选择属性的数值增强factor倍
+ImgeEnhance.Color(im)=>颜色平衡属性
+ImgeEnhance.Contrast(im)=>对比度属性
+ImgeEnhance.Brightness(im)=>亮度属性
+ImgeEnhance.Sharpness(im)=>锐度属性
+
+from PIL import Image
+from PIL import ImgeEnhance
+im=Image.open("sis.jpg")
+om=ImgeEnhance.Contrast(im)=>提取相关属性
+om.enhance(20).save('cix.jpg')
+
+from PIL import Image
+ascii_char=list("!@#$%^&*()_+1234567890-=,.;'[]/<>:\"{}?`qwertyuiopasdfghjklzxcvbnm\\")
+def get_char(r,g,b,alpha=256):
+	if alpha==0:
+		return ' '
+	gray=int(0.2126*r+0.7152*g+0.0722*b)
+	unit=256/len(ascii_char)
+	return ascii_char[int(gray//unit)]
+def main():
+	im=Image.open('123.jpg')
+	width,height=100,60
+	im=im.resize((width,height))=>改变大小
+	txt=""
+	for i in range(height):
+		for j in range(width):
+			txt+=get_char(*im.getpixel((j,i)))=>提取像素点，拆分为r,g,b
+		txt+='\n'
+	fo=open("pic_char.txt","w")
+	fo.write(txt)
+	fo.close()
+main()
+
+fo=open("212.csv","r")
+ls=[]
+for line in fo:
+	line=line.replace("\n","")
+	ls.append(line.split(","))
+print(ls)
+fo.close()
+
+fo=open("212.csv","r")
+ls=[]
+for line in fo:
+	line=line.replace("\n","")
+	ls=line.split(",")
+	lns=""
+	for s in ls:
+		lns+="{}\t".format(s)
+	print(lns)
+fo.close()
+
+fo=open("212.csv","w+")
+ls=['北京','101','120','121']
+fo.write(",".join(ls)+"\n")
+fo.close()
+
+fr=open("try.csv","r")
+fw=open("try1.csv","w")
+ls=[]
+for line in fr:
+	line=line.replace("\n","")
+	ls.append(line.split(","))
+for i in range(len(ls)):
+	for j in range(len(ls[i])):
+		if ls[i][j].replace(".","").isnumeric():
+			ls[i][j]="{:.2}%".format(float(ls[i][j])/100)
+for row in ls:
+	print(row)
+	fw.write(",".join(row)+"\n")
+fr.close()
+fw.close()
+
+#e13.lcsv2html.py
+seg1='''
+<!DOCTYPE HTML>\n<body>\n<meta charset=gb2312>
+<h2 align=center>2016年7月部分大中城市新建住宅价格指数</h2>
+<table border='1' align="center" width=70%>
+<tr bgcolor='orange'>\n '''
+seg2="</tr>\n"
+seg3="</table>\n</body>\n</html>"
+def fill_data(locols):
+	seg='<tr><td align="center">{}</td><td align="center">{}</td><td align="center">{}</td><td align="center">{}</td></tr>\n'.format(*locols)
+	return seg
+fr=open("price.csv"."r")
+ls=[]
+for line in fr:
+	line=line.replace("\n","")
+	ls.append(line.split(","))
+fr.close()
+fw=open("price.html","w")
+fw.write(seg1)
+fw.write('<th width="25%">{}</th>\n<th width="25%">{}</th>\n<th width="25%">{}</th>\n<th width="25%">{}</th>\n'.format(*ls[0]))
+fw.write(seg2)
+for i in range(len(ls)-1):
+	fw.write(fill_data(ls[i+1]))
+fw.write(seg3)
+fw.close()
+
+json库操作类函数
+import json
+json.dumps(obj,sort_keys=False,indent=None)=>将python数据转化为json格式
+json.loads(string)=>将json格式字符串转化为python数据格式
+json.dump(obj,pf,sort_keys=False,indent=None)=>输出到文件pf
+json.load(fp)=>从文件pf读入
+
+import json
+dt={'b':2,'c':4,'a':6}
+s1=json.dump(dt)
+s2=json.dumps(dt,sort_keys=True,indent=4)
+print(s1)
+print(s2)
+dt2=json.loads(s2)
+print(dt2,type(dt2))
+
+import json
+fr=open("212.csv","r")
+ls=[]
+for line in fr:
+	line=line.replace("\n","")
+	ls.append(line.split(","))
+fr.close()
+fw=open("price.json","w")
+for i in range(1,len(ls)):
+	ls[i]=dict(zip(ls[0],ls[i]))
+json.dump(ls[1:],fw,sort_keys=True,indent=4,ensure_ascii=False)
+fw.close()
